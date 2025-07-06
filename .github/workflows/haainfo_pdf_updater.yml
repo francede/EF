@@ -21,7 +21,7 @@ jobs:
 
       - name: download pdf
         shell: bash
-        run: "wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=11CDHkZ-oSTM62-riHNhNQUNxES3YDt5_uADfA9piqLw' -O tmp.pdf"
+        run: "wget --no-check-certificate --header='Authorization: Bearer ${{secrets.GOOGLE_API_KEY}}' 'https://www.googleapis.com/drive/v3/files/11CDHkZ-oSTM62-riHNhNQUNxES3YDt5_uADfA9piqLw/export?mimeType=application%2Fpdf' -O tmp.pdf"
       - name: replace pdf with newer
         shell: bash
         run: "mv tmp.pdf haainfo.pdf"
