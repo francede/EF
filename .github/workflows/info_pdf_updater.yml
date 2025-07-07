@@ -19,12 +19,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: download pdf
+      - name: download pdf fi
         shell: bash
-        run: "wget 'https://docs.google.com/document/d/11CDHkZ-oSTM62-riHNhNQUNxES3YDt5_uADfA9piqLw/export?format=pdf&tab=t.0' -O tmp.pdf"
-      - name: replace pdf with newer
+        run: "wget 'https://docs.google.com/document/d/11CDHkZ-oSTM62-riHNhNQUNxES3YDt5_uADfA9piqLw/export?format=pdf&tab=t.0' -O tmp_fi.pdf"
+      - name: replace pdf fi with newer
         shell: bash
-        run: "mv tmp.pdf haainfo.pdf"
+        run: "mv tmp_fi.pdf info_fi.pdf"
+      - name: download pdf en
+        shell: bash
+        run: "wget 'https://docs.google.com/document/d/11CDHkZ-oSTM62-riHNhNQUNxES3YDt5_uADfA9piqLw/export?format=pdf&tab=t.ulycuudcjvrh' -O tmp_en.pdf"
+      - name: replace pdf en with newer
+        shell: bash
+        run: "mv tmp_en.pdf info_en.pdf"
+      - name: download pdf it
+        shell: bash
+        run: "wget 'https://docs.google.com/document/d/11CDHkZ-oSTM62-riHNhNQUNxES3YDt5_uADfA9piqLw/export?format=pdf&tab=t.3qm8q8nqc1ur' -O tmp_it.pdf"
+      - name: replace pdf it with newer
+        shell: bash
+        run: "mv tmp_it.pdf info_it.pdf"
       - name: commit new pdf
         run: |
           git config user.name "github-actions[bot]"
